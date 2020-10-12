@@ -1,82 +1,83 @@
 import React, {Component} from 'react';
 
 import './App.css';
+import Header from "./components/header/Header";
+import TodoList from "./components/list/TodoList";
+import Form from "./components/form/Form";
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.handleInputTextChange = this.handleInputTextChange.bind(this);
-        this.handleAddTodo = this.handleAddTodo.bind(this);
-        this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
-        this.handleCompleteTodo = this.handleCompleteTodo.bind(this);
-    }
-
-    handleInputTextChange() {
-        //TODO handle the changes on the text input
+    state = {
+        todoName: '',
+        todoList: [
+            {
+                id: Math.random(),
+                name: 'Prepare my presentation',
+                completed: true,
+            },
+            {
+                id: Math.random(),
+                name: 'Do my presentation',
+                completed: false,
+            },
+        ],
     };
 
-    handleAddTodo() {
-        //TODO add a todo to the TodoList
+    handleTodoInputTextChange = inputValue => {
+        this.setState({ todoName: inputValue});
     };
 
-    handleDeleteTodo() {
-        //TODO delete a todo from the TodoList
+    handleAddTodo = (todoName) => {
+        const newTodo = {
+            id: Math.random(),
+            name: todoName,
+            completed: false,
+        };
+
+        const newTodoList = [
+            ...this.state.todoList,
+            newTodo,
+        ];
+
+        this.setState({todoList: newTodoList});
     };
 
-    handleCompleteTodo() {
-        //TODO mark a todo as completed
+    handleCompleteTodo = (todoId) => {
+        const newTodoList = this.state.todoList.map(todo => {
+            if (todo.id === todoId) {
+                todo.completed = !todo.completed;
+            }
+            return todo;
+        });
+
+        this.setState({ todoList: newTodoList });
+    };
+
+    handleRemoveTodo = (todoId) => {
+        const newTodoList = this.state.todoList
+            .filter(({ id }) => id !== todoId);
+
+        this.setState({ todoList: newTodoList });
     };
 
     render() {
+        const { todoName, todoList, } = this.state;
+
         return (
             <div className="app">
-                <div className="header">
-                    MyTodo list
-                </div>
+                <Header/>
                 <div className="overview-wrapper">
-                    <div className="list-wrapper">
-                        <div className="list">
-                            <div className="list-item">
-                                <div className="item">
-                                    <input type="checkbox" onChange={this.handleCompleteTodo}/>
-                                    <div className="item-name completed"> Prepare my presentation </div>
-                                </div>
-                                <button
-                                    className="delete-button"
-                                    type="button"
-                                    onClick={this.handleDeleteTodo}
-                                >
-                                    X
-                                </button>
-                            </div>
-                            <div className="list-item">
-                                <div className="item">
-                                    <input type="checkbox" onChange={this.handleCompleteTodo}/>
-                                    <div className="item-name"> Do my presentation </div>
-                                </div>
-                                <button
-                                    className="delete-button"
-                                    type="button"
-                                    onClick={this.handleDeleteTodo}
-                                >
-                                    X
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="form">
-                        <button className="input-button" type="button" onClick={this.handleAddTodo}>
-                            Add item
-                        </button>
-                        <input
-                            className="input-text"
-                            type="text"
-                            name={'text'}
-                            onChange={this.handleInputTextChange}
-                        />
-                    </div>
+                    <TodoList
+                        onCompleteTodo={this.handleCompleteTodo}
+                        onRemoveTodo={this.handleRemoveTodo}
+                        todoList={todoList}
+                    />
+                    <Form
+                        onInputChange={this.handleTodoInputTextChange}
+                        onAddTodo={this.handleAddTodo}
+                        inputValue={todoName}
+                        buttonText="Add Todo"
+                    />
                 </div>
             </div>
         );

@@ -1,11 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
+import TodoItem from "./TodoItem";
 import PropTypes from 'prop-types';
 
-function TodoList() {
-  render ();
+class TodoList extends Component{
+
+    render() {
+        const {
+            todoList,
+            onRemoveTodo,
+            onCompleteTodo,
+        } = this.props;
+
+        return (
+          <div className="list-wrapper">
+              <div className="list">
+                  {
+                     todoList.map(todo => (
+                         <div className="list-item" key={todo.id}>
+                             <TodoItem
+                                 todo={todo}
+                                 onCompleteTodo={onCompleteTodo}
+                                 onRemoveTodo={onRemoveTodo}
+                             />
+                         </div>
+                     ))
+                  }
+              </div>
+          </div>
+        );
+    }
 }
 
 TodoList.propTypes = {
-};
+    todoList: PropTypes.array.isRequired,
+    onRemoveTodo: PropTypes.func.isRequired,
+    onCompleteTodo: PropTypes.func.isRequired,
+}
 
 export default TodoList;
