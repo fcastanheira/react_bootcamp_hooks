@@ -9,13 +9,12 @@ const TodoList = ({ todoList, onRemoveTodo, onCompleteTodo, }) => {
           <div className="list">
               {
                  todoList.map(todo => (
-                     <div className="list-item" key={todo.id}>
-                         <TodoItem
-                             todo={todo}
-                             onCompleteTodo={onCompleteTodo}
-                             onRemoveTodo={onRemoveTodo}
-                         />
-                     </div>
+                     <TodoItem
+                         key={todo.id}
+                         todo={todo}
+                         onCompleteTodo={onCompleteTodo}
+                         onRemoveTodo={onRemoveTodo}
+                     />
                  ))
               }
           </div>

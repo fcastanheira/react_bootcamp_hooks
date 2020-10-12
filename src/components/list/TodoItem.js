@@ -10,7 +10,7 @@ const TodoItem = ({ onCompleteTodo, onRemoveTodo, todo, }) => {
     } = todo;
 
     return (
-        <>
+        <div className="list-item" >
             <div className="item">
                 <input
                     type="checkbox"
@@ -30,7 +30,7 @@ const TodoItem = ({ onCompleteTodo, onRemoveTodo, todo, }) => {
             >
                 X
             </button>
-        </>
+        </div>
     );
 }
 
