@@ -13,7 +13,7 @@ class TodoItem extends Component {
         } = todo;
 
         return (
-            <>
+            <div className="list-item" >
                 <div className="item">
                     <input
                         type="checkbox"
@@ -33,7 +33,7 @@ class TodoItem extends Component {
                 >
                     X
                 </button>
-            </>
+            </div>
         );
     };
 }

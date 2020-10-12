@@ -16,13 +16,12 @@ class TodoList extends Component{
               <div className="list">
                   {
                      todoList.map(todo => (
-                         <div className="list-item" key={todo.id}>
-                             <TodoItem
-                                 todo={todo}
-                                 onCompleteTodo={onCompleteTodo}
-                                 onRemoveTodo={onRemoveTodo}
-                             />
-                         </div>
+                         <TodoItem
+                             key={todo.id}
+                             todo={todo}
+                             onCompleteTodo={onCompleteTodo}
+                             onRemoveTodo={onRemoveTodo}
+                         />
                      ))
                   }
               </div>
