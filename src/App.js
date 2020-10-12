@@ -39,7 +39,10 @@ class App extends Component {
             newTodo,
         ];
 
-        this.setState({todoList: newTodoList});
+        this.setState({
+            todoList: newTodoList,
+            todoName: '',
+        });
     };
 
     handleCompleteTodo = (todoId) => {
