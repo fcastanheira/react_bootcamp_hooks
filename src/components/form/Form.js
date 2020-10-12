@@ -1,35 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Form extends Component {
+const Form = ({ inputValue, onAddTodo, onInputChange, buttonText, }) => {
 
-    render() {
-        const {
-            inputValue,
-            onAddTodo,
-            onInputChange,
-            buttonText,
-        } = this.props;
-
-        return (
-            <div className="form">
-                <button
-                    className="input-button"
-                    type="button"
-                    onClick={() => onAddTodo(inputValue)}
-                >
-                    {buttonText}
-                </button>
-                <input
-                    className="input-text"
-                    type="text"
-                    name={'text'}
-                    onChange={({ target }) => onInputChange(target.value)}
-                    value={inputValue}
-                />
-            </div>
-        );
-    }
+    return (
+        <div className="form">
+            <button
+                className="input-button"
+                type="button"
+                onClick={() => onAddTodo(inputValue)}
+            >
+                {buttonText}
+            </button>
+            <input
+                className="input-text"
+                type="text"
+                name={'text'}
+                onChange={({ target }) => onInputChange(target.value)}
+                value={inputValue}
+            />
+        </div>
+    );
 }
 
 Form.propTypes = {

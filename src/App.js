@@ -68,7 +68,10 @@ class App extends Component {
 
         return (
             <div className="app">
-                <Header/>
+                <Header>
+                    MyTodo List Children {todoList.length}
+                    <button>Header button</button>
+                </Header>
                 <div className="overview-wrapper">
                     <TodoList
                         onCompleteTodo={this.handleCompleteTodo}
