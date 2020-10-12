@@ -1,11 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 
-function TodoList() {
-  render ();
+class TodoList extends Component {
+  render() {}
 }
-
-TodoList.propTypes = {
-};
 
 export default TodoList;

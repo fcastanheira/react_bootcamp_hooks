@@ -1,11 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 
-function TodoItem() {
-  render ();
+class TodoItem extends Component {
+  render() {}
 }
-
-TodoItem.propTypes = {
-};
 
 export default TodoItem;
