@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 class TodoItem extends Component {
 
     render() {
-        const {
-            onCompleteTodo = () => {},
-            onRemoveTodo = () => {},
-            todo = {},
-        } = this.props;
+        const { onCompleteTodo, onRemoveTodo, todo, } = this.props;
 
         const {
             id = '',
@@ -44,8 +40,8 @@ class TodoItem extends Component {
 
 TodoItem.propTypes = {
     todo: PropTypes.object.isRequired,
-    onCompleteTodo: PropTypes.func,
-    onRemoveTodo: PropTypes.func,
+    onCompleteTodo: PropTypes.func.isRequired,
+    onRemoveTodo: PropTypes.func.isRequired,
 }
 
 export default TodoItem;
