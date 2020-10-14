@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
 
+    componentWillUnmount() {
+       const { todo } = this.props;
+       alert(`The todo named -> ${todo.name}, will be removed!`);
+    }
+
     render() {
         const {
             onCompleteTodo,

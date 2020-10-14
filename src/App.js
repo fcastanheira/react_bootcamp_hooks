@@ -7,21 +7,42 @@ import Form from "./components/form/Form";
 
 class App extends Component {
 
-    state = {
-        todoName: '',
-        todoList: [
-            {
-                id: Math.random(),
-                name: 'Prepare my presentation',
-                completed: true,
-            },
-            {
-                id: Math.random(),
-                name: 'Do my presentation',
-                completed: false,
-            },
-        ],
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            todoName: '',
+            todoList: [],
+        };
+
+        console.log('passing on the constructor');
+    }
+
+
+    componentDidMount() {
+        console.log('passing on the Did Mount');
+        // async fetch()
+        setTimeout(() => {
+            this.setState({
+                todoList: [
+                    {
+                        id: Math.random(),
+                        name: 'Prepare my presentation',
+                        completed: true,
+                    },
+                    {
+                        id: Math.random(),
+                        name: 'Do my presentation',
+                        completed: false,
+                    },
+                ],
+            });
+        }, 1000);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        // auto save feature
+    }
 
     handleTodoInputTextChange = inputValue => {
         this.setState({ todoName: inputValue});
