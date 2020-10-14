@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 class Form extends Component {
-
-  render() {};
+    render() {};
 }
 
 export default Form;
