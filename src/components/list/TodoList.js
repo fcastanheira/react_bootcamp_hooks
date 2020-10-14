@@ -1,24 +1,25 @@
 import React from 'react';
-import TodoItem from "./TodoItem";
 import PropTypes from 'prop-types';
+
+import TodoItem from "./TodoItem";
 
 const TodoList = ({ todoList, onRemoveTodo, onCompleteTodo, }) => {
 
     return (
-      <div className="list-wrapper">
-          <div className="list">
-              {
-                 todoList.map(todo => (
-                     <TodoItem
-                         key={todo.id}
-                         todo={todo}
-                         onCompleteTodo={onCompleteTodo}
-                         onRemoveTodo={onRemoveTodo}
-                     />
-                 ))
-              }
-          </div>
-      </div>
+        <div className="list-wrapper">
+            <div className="list">
+                {
+                    todoList.map(todo => (
+                        <TodoItem
+                            key={todo.id}
+                            todo={todo}
+                            onCompleteTodo={onCompleteTodo}
+                            onRemoveTodo={onRemoveTodo}
+                        />
+                    ))
+                }
+            </div>
+        </div>
     );
 }
 
