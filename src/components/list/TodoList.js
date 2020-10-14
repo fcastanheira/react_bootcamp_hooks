@@ -12,20 +12,20 @@ class TodoList extends Component{
         } = this.props;
 
         return (
-          <div className="list-wrapper">
-              <div className="list">
-                  {
-                     todoList.map(todo => (
-                         <TodoItem
-                             key={todo.id}
-                             todo={todo}
-                             onCompleteTodo={onCompleteTodo}
-                             onRemoveTodo={onRemoveTodo}
-                         />
-                     ))
-                  }
-              </div>
-          </div>
+            <div className="list-wrapper">
+                <div className="list">
+                    {
+                        todoList.map(todo => (
+                            <TodoItem
+                                key={todo.id}
+                                todo={todo}
+                                onCompleteTodo={onCompleteTodo}
+                                onRemoveTodo={onRemoveTodo}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
         );
     }
 }
