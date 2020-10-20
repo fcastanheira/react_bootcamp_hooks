@@ -43,7 +43,7 @@ class App extends Component {
                     </div>
                     <div className="form">
                         <button className="input-button" type="button" onClick={() => {}}>
-                            Add item
+                            { 'Add Todo' }
                         </button>
                         <input
                             className="input-text"
