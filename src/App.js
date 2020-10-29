@@ -44,9 +44,15 @@ class App extends Component {
         // auto save feature
     }
 
-    handleTodoInputTextChange = inputValue => {
-        this.setState({ todoName: inputValue});
-    };
+    handleInputChange = inputValue => {
+        const lastCharacter = inputValue.charAt(inputValue.length - 1);
+
+        if ( lastCharacter === '.') {
+            return;
+        }
+
+        this.setState({ todoName: inputValue });
+    }
 
     handleAddTodo = (todoName) => {
         const newTodo = {
@@ -90,21 +96,19 @@ class App extends Component {
         return (
             <div className="app">
                 <Header>
-                    MyTodo List Children {todoList.length}
-                    <button>Header button</button>
+                    { 'My title passed as Children' }
                 </Header>
 
                 <div className="overview-wrapper">
                     <TodoList
                         onCompleteTodo={this.handleCompleteTodo}
                         onRemoveTodo={this.handleRemoveTodo}
-                        todoList={todoList}
+                        list={todoList}
                     />
                     <Form
-                        onInputChange={this.handleTodoInputTextChange}
+                        onInputChange={this.handleInputChange}
                         onAddTodo={this.handleAddTodo}
-                        inputValue={todoName}
-                        buttonText="Add Todo"
+                        name={todoName}
                     />
                 </div>
             </div>
