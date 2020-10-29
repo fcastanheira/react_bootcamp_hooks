@@ -16,6 +16,11 @@ We refactor some Class Components to be Functional Components. And start using s
 
 In the project directory, you can run:
 
+### `npm install`
+
+Install all the needed dependencies 
+
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
