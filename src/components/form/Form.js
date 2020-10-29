@@ -7,8 +7,14 @@ class Form extends Component {
     };
 
     handleInputChange = inputValue => {
-        this.setState({ name: inputValue});
-    };
+        const lastCharacter = inputValue.charAt(inputValue.length - 1);
+
+        if ( lastCharacter === '.') {
+            return;
+        }
+
+        this.setState({ name: inputValue });
+    }
 
     handleAddTodo = (todoName) => {
         const newTodo = {
