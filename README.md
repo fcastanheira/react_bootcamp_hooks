@@ -1,12 +1,14 @@
 ## React Bootcamp
 
-### Step  2
+### Step  3
 
 Here you will find our application with all the functionalities.
 
 We successfully lift the state up to our App component and all the components are in Sync.
 
 Now we only have a Single Source of Truth.
+
+We refactor some Class Components to be Functional Components. And start using some functions from the React LifeCycle Hooks.
  
  
 
