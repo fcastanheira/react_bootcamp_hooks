@@ -37,10 +37,11 @@ class App extends Component {
                     },
                 ],
             });
-        }, 1000);
+        }, 3000);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('passing on the Did Update');
         // auto save feature
     }
 
@@ -91,6 +92,8 @@ class App extends Component {
     };
 
     render() {
+        console.log('passing on render');
+
         const { todoName, todoList, } = this.state;
 
         return (
