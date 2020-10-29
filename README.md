@@ -15,6 +15,10 @@ We cannot add a new Todo to our list.
 
 In the project directory, you can run:
 
+### `npm install`
+
+Install all the needed dependencies 
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
