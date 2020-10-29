@@ -1,5 +1,6 @@
 ## React Bootcamp
 
+### Step 0
 Here you will find a simple application called My Todo List.
  
  As the name says, this application will handle a list of tasks where for each task we will be able to create, delete and mark as completed.
