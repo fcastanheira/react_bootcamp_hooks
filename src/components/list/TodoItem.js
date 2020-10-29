@@ -7,14 +7,14 @@ class TodoItem extends Component {
         const {
             onCompleteTodo,
             onRemoveTodo,
-            todo,
+            item,
         } = this.props;
 
         const {
             id = '',
             name = '',
             completed = false,
-        } = todo;
+        } = item;
 
         return (
             <div className="list-item" >
@@ -43,7 +43,7 @@ class TodoItem extends Component {
 }
 
 TodoItem.propTypes = {
-    todo: PropTypes.object.isRequired,
+    item: PropTypes.object.isRequired,
     onCompleteTodo: PropTypes.func.isRequired,
     onRemoveTodo: PropTypes.func.isRequired,
 }
