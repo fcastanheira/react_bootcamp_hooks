@@ -14,6 +14,11 @@ Now we only have a Single Source of Truth.
 
 In the project directory, you can run:
 
+### `npm install`
+
+Install all the needed dependencies 
+
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
