@@ -12,6 +12,11 @@ Currently, the code is all on the App.js file. No logic implemented, only layout
 
 In the project directory, you can run:
 
+### `npm install`
+
+Install all the needed dependencies 
+
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
