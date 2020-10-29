@@ -1,42 +1,47 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 class Form extends Component {
 
+    state = {
+        name: ''
+    };
+
+    handleInputChange = inputValue => {
+        this.setState({ name: inputValue});
+    };
+
+    handleAddTodo = (todoName) => {
+        const newTodo = {
+            id: Math.random(),
+            name: todoName,
+            completed: false,
+        };
+
+        // add the new TodoItem to the list
+    };
+
     render() {
-        const {
-            inputValue,
-            onAddTodo,
-            onInputChange,
-            buttonText,
-        } = this.props;
+        const { name } = this.state;
 
         return (
             <div className="form">
                 <button
                     className="input-button"
                     type="button"
-                    onClick={() => onAddTodo(inputValue)}
+                    onClick={() => this.handleAddTodo(name)}
                 >
-                    {buttonText}
+                    { 'Add Todo' }
                 </button>
                 <input
                     className="input-text"
                     type="text"
                     name={'text'}
-                    onChange={({ target }) => onInputChange(target.value)}
-                    value={inputValue}
+                    onChange={(event) => this.handleInputChange(event.target.value)}
+                    value={name}
                 />
             </div>
         );
     }
-}
-
-Form.propTypes = {
-    onInputChange: PropTypes.func.isRequired,
-    onAddTodo: PropTypes.func.isRequired,
-    inputValue: PropTypes.string.isRequired,
-    buttonText: PropTypes.string.isRequired,
 }
 
 export default Form;

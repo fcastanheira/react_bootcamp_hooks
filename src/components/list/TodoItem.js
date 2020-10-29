@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 class TodoItem extends Component {
 
     render() {
-        const { onCompleteTodo, onRemoveTodo, todo, } = this.props;
+        const { onCompleteTodo, onRemoveTodo, item } = this.props;
 
         const {
             id = '',
             name = '',
             completed = false,
-        } = todo;
+        } = item;
 
         return (
             <div className="list-item" >
@@ -39,7 +39,7 @@ class TodoItem extends Component {
 }
 
 TodoItem.propTypes = {
-    todo: PropTypes.object.isRequired,
+    item: PropTypes.object.isRequired,
     onCompleteTodo: PropTypes.func.isRequired,
     onRemoveTodo: PropTypes.func.isRequired,
 }
