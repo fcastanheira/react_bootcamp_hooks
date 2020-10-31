@@ -7,25 +7,14 @@ import Form from "./components/form/Form";
 
 function App() {
     const [todoList, setTodoList] = useState([]);
-    const [todoName, setTodoName] = useState('');
+    const [todoTitle, setTodoTitle] = useState('');
 
     useEffect(() => {
-        console.log('passing on the Did Mount');
+        console.log('passing on the useEffect');
         // async fetch()
-        setTimeout(() => {
-            setTodoList([
-                {
-                    id: Math.random(),
-                    name: 'Prepare my presentation',
-                    completed: true,
-                },
-                {
-                    id: Math.random(),
-                    name: 'Do my presentation',
-                    completed: false,
-                },
-            ])
-        }, 3000);
+        fetch('https://jsonplaceholder.typicode.com/users/1/todos')
+            .then(response => response.json())
+            .then(data => setTodoList(data));
     }, []);
 
 
@@ -36,13 +25,13 @@ function App() {
             return;
         }
 
-        setTodoName(inputValue);
+        setTodoTitle(inputValue);
     }
 
-    const handleAddTodo = (todoName) => {
+    const handleAddTodo = (todoTitle) => {
         const newTodo = {
             id: Math.random(),
-            name: todoName,
+            title: todoTitle,
             completed: false,
         };
 
@@ -52,7 +41,7 @@ function App() {
         ];
 
         setTodoList(newTodoList);
-        setTodoName('');
+        setTodoTitle('');
     };
 
     const handleCompleteTodo = (todoId) => {
@@ -90,7 +79,7 @@ function App() {
                 <Form
                     onInputChange={handleInputChange}
                     onAddTodo={handleAddTodo}
-                    name={todoName}
+                    name={todoTitle}
                 />
             </div>
         </div>

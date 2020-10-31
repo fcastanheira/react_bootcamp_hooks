@@ -17,7 +17,7 @@ class TodoItem extends Component {
 
         const {
             id = '',
-            name = '',
+            title = '',
             completed = false,
         } = item;
 
@@ -32,7 +32,7 @@ class TodoItem extends Component {
                     <div className={
                         `item-name ${completed ? 'completed' : ''}`
                     }>
-                        {name}
+                        {title}
                     </div>
                 </div>
                 <button
