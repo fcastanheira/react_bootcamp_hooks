@@ -1,61 +1,45 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './App.css';
 import Header from "./components/header/Header";
 import TodoList from "./components/list/TodoList";
 import Form from "./components/form/Form";
 
-class App extends Component {
+function App() {
+    const [todoList, setTodoList] = useState([]);
+    const [todoName, setTodoName] = useState('');
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            todoName: '',
-            todoList: [],
-        };
-
-        console.log('passing on the constructor');
-    }
-
-
-    componentDidMount() {
+    useEffect(() => {
         console.log('passing on the Did Mount');
         // async fetch()
         setTimeout(() => {
-            this.setState({
-                todoList: [
-                    {
-                        id: Math.random(),
-                        name: 'Prepare my presentation',
-                        completed: true,
-                    },
-                    {
-                        id: Math.random(),
-                        name: 'Do my presentation',
-                        completed: false,
-                    },
-                ],
-            });
+            setTodoList([
+                {
+                    id: Math.random(),
+                    name: 'Prepare my presentation',
+                    completed: true,
+                },
+                {
+                    id: Math.random(),
+                    name: 'Do my presentation',
+                    completed: false,
+                },
+            ])
         }, 3000);
-    }
+    }, []);
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('passing on the Did Update');
-        // auto save feature
-    }
 
-    handleInputChange = inputValue => {
+    const handleInputChange = inputValue => {
         const lastCharacter = inputValue.charAt(inputValue.length - 1);
 
-        if ( lastCharacter === '.') {
+        if (lastCharacter === '.') {
             return;
         }
 
-        this.setState({ todoName: inputValue });
+        setTodoName(inputValue);
     }
 
-    handleAddTodo = (todoName) => {
+    const handleAddTodo = (todoName) => {
         const newTodo = {
             id: Math.random(),
             name: todoName,
@@ -63,60 +47,55 @@ class App extends Component {
         };
 
         const newTodoList = [
-            ...this.state.todoList,
+            ...todoList,
             newTodo,
         ];
 
-        this.setState({
-            todoList: newTodoList,
-            todoName: '',
-        });
+        setTodoList(newTodoList);
+        setTodoName('');
     };
 
-    handleCompleteTodo = (todoId) => {
-        const newTodoList = this.state.todoList.map(todo => {
+    const handleCompleteTodo = (todoId) => {
+        const newTodoList = todoList.map(todo => {
             if (todo.id === todoId) {
                 todo.completed = !todo.completed;
             }
             return todo;
         });
 
-        this.setState({ todoList: newTodoList });
+        setTodoList(newTodoList);
     };
 
-    handleRemoveTodo = (todoId) => {
-        const newTodoList = this.state.todoList
-            .filter(({ id }) => id !== todoId);
-
-        this.setState({ todoList: newTodoList });
+    const handleRemoveTodo = (todoId) => {
+        const newTodoList = todoList
+            .filter(({id}) => id !== todoId);
+        setTodoList(newTodoList);
     };
 
-    render() {
-        console.log('passing on render');
 
-        const { todoName, todoList, } = this.state;
+    console.log('passing on render');
 
-        return (
-            <div className="app">
-                <Header>
-                    { 'My title passed as Children' }
-                </Header>
+    return (
+        <div className="app">
+            <Header>
+                {'My title passed as Children'}
+            </Header>
 
-                <div className="overview-wrapper">
-                    <TodoList
-                        onCompleteTodo={this.handleCompleteTodo}
-                        onRemoveTodo={this.handleRemoveTodo}
-                        list={todoList}
-                    />
-                    <Form
-                        onInputChange={this.handleInputChange}
-                        onAddTodo={this.handleAddTodo}
-                        name={todoName}
-                    />
-                </div>
+            <div className="overview-wrapper">
+                <TodoList
+                    onCompleteTodo={handleCompleteTodo}
+                    onRemoveTodo={handleRemoveTodo}
+                    list={todoList}
+                />
+                <Form
+                    onInputChange={handleInputChange}
+                    onAddTodo={handleAddTodo}
+                    name={todoName}
+                />
             </div>
-        );
-    }
+        </div>
+    );
+
 }
 
 export default App;
