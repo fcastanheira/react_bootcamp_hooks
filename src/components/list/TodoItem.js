@@ -1,50 +1,48 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-class TodoItem extends Component {
+const TodoItem = (props) => {
+    /*
+        componentWillUnmount() {
+           const { item } = props;
+           alert(`The todo named -> ${item.title}, will be removed!`);
+        }
+    */
+    const {
+        onCompleteTodo,
+        onRemoveTodo,
+        item,
+    } = props;
 
-    componentWillUnmount() {
-       const { todo } = this.props;
-       alert(`The todo named -> ${todo.name}, will be removed!`);
-    }
+    const {
+        id = '',
+        title = '',
+        completed = false,
+    } = item;
 
-    render() {
-        const {
-            onCompleteTodo,
-            onRemoveTodo,
-            item,
-        } = this.props;
-
-        const {
-            id = '',
-            title = '',
-            completed = false,
-        } = item;
-
-        return (
-            <div className="list-item" >
-                <div className="item">
-                    <input
-                        type="checkbox"
-                        onChange={() => onCompleteTodo(id)}
-                        checked={completed}
-                    />
-                    <div className={
-                        `item-name ${completed ? 'completed' : ''}`
-                    }>
-                        {title}
-                    </div>
+    return (
+        <div className="list-item">
+            <div className="item">
+                <input
+                    type="checkbox"
+                    onChange={() => onCompleteTodo(id)}
+                    checked={completed}
+                />
+                <div className={
+                    `item-name ${completed ? 'completed' : ''}`
+                }>
+                    {title}
                 </div>
-                <button
-                    className="delete-button"
-                    type="button"
-                    onClick={() => onRemoveTodo(id)}
-                >
-                    X
-                </button>
             </div>
-        );
-    };
+            <button
+                className="delete-button"
+                type="button"
+                onClick={() => onRemoveTodo(id)}
+            >
+                X
+            </button>
+        </div>
+    );
 }
 
 TodoItem.propTypes = {

@@ -4,18 +4,17 @@ import './App.css';
 import Header from "./components/header/Header";
 import TodoList from "./components/list/TodoList";
 import Form from "./components/form/Form";
+import {useFetch} from "./components/customHooks/useFetch";
 
 function App() {
+    const list = useFetch('https://jsonplaceholder.typicode.com/users/1/todos');
     const [todoList, setTodoList] = useState([]);
     const [todoTitle, setTodoTitle] = useState('');
 
     useEffect(() => {
         console.log('passing on the useEffect');
-        // async fetch()
-        fetch('https://jsonplaceholder.typicode.com/users/1/todos')
-            .then(response => response.json())
-            .then(data => setTodoList(data));
-    }, []);
+        setTodoList(list);
+    }, [list]);
 
 
     const handleInputChange = inputValue => {
@@ -67,7 +66,7 @@ function App() {
     return (
         <div className="app">
             <Header>
-                {'My title passed as Children'}
+                {'Refactoring code with Hooks'}
             </Header>
 
             <div className="overview-wrapper">
