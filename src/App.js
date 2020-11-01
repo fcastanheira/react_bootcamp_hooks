@@ -5,16 +5,18 @@ import Header from "./components/header/Header";
 import TodoList from "./components/list/TodoList";
 import Form from "./components/form/Form";
 import {useFetch} from "./components/customHooks/useFetch";
+import {useFetchUsingReducer} from "./components/customHooks/useFetchUsingReducer";
 
 function App() {
-    const list = useFetch('https://jsonplaceholder.typicode.com/users/1/todos');
+    const {data, error} = useFetchUsingReducer('https://jsonplaceholder.typicode.com/users/1/todos');
+
     const [todoList, setTodoList] = useState([]);
     const [todoTitle, setTodoTitle] = useState('');
 
     useEffect(() => {
         console.log('passing on the useEffect');
-        setTodoList(list);
-    }, [list]);
+        setTodoList(data);
+    }, [data]);
 
 
     const handleInputChange = inputValue => {
@@ -68,7 +70,9 @@ function App() {
             <Header>
                 {'Refactoring code with Hooks'}
             </Header>
-
+            {error &&
+                <p className="error">{error}</p>
+            }
             <div className="overview-wrapper">
                 <TodoList
                     onCompleteTodo={handleCompleteTodo}
