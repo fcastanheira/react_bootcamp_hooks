@@ -1,13 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const TodoItem = (props) => {
-    /*
-        componentWillUnmount() {
-           const { item } = props;
-           alert(`The todo named -> ${item.title}, will be removed!`);
-        }
-    */
+
     const {
         onCompleteTodo,
         onRemoveTodo,
