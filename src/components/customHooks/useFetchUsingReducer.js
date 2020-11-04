@@ -1,4 +1,4 @@
-import React, {useReducer, useEffect} from 'react';
+import {useReducer, useEffect} from 'react';
 
 
 const initialState = {
@@ -44,7 +44,7 @@ export const useFetchUsingReducer = (url) => {
                     payload: 'The data could not be fetched',
                 });
             });
-    }, []);
+    }, [url]);
 
     return state;
 }
